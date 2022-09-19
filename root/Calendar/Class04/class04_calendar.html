@@ -43,13 +43,23 @@
       images[4].style.display = 'none';
 
       btn1.addEventListener("click", function functionName() {
+        if(click <= 0){
+
+        }
+        else{
+          click--;
+        }
         clickBtn();
-        click--;
       });
 
       btn2.addEventListener("click", function functionName() {
+        if(click >= 4){
+
+        }
+        else{
+          click++;
+        }
         clickBtn();
-        click++;
       });
 
       function clickBtn() {
@@ -91,7 +101,6 @@
             images[4].style.display = 'block';
             break;
         }
-
       }
     </script>
   </body>
