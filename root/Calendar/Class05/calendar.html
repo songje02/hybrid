@@ -2,14 +2,53 @@
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>달력 만들기</title>
+    <style>
+      .day{margin-left: 10px;}
+      span{margin-right: 50px;}
+      .div{width: 60px; height: 60px; border: 1px solid black; float: left;}
+      .total_div{width: 435px; height: 62px; background-color: pink;}
+    </style>
   </head>
   <body>
     <div class="total">
-      <h1>2022년 10월</h1>
-      <div class="">
-
+      <h2>2022년 10월</h2>
+      <div class="day">
+        <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+      </div>
+      <div class="total_div">
+        <div class="div"></div><div class="div"></div><div class="div"></div>
+        <div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div>
+      </div>
+      <div class="total_div">
+        <div class="div"></div><div class="div"></div><div class="div"></div>
+        <div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div>
+      </div>
+      <div class="total_div">
+        <div class="div"></div><div class="div"></div><div class="div"></div>
+        <div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div>
+      </div>
+      <div class="total_div">
+        <div class="div"></div><div class="div"></div><div class="div"></div>
+        <div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div>
+      </div>
+      <div class="total_div">
+        <div class="div"></div><div class="div"></div><div class="div"></div>
+        <div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div>
+      </div>
+      <div class="total_div">
+        <div class="div"></div><div class="div"></div><div class="div"></div>
+        <div class="div"></div><div class="div"></div><div class="div"></div><div class="div"></div>
       </div>
     </div>
+
+    <script>
+      var total_div = document.getElementsByClassName("total_div");
+      var div = document.getElementsByClassName("div");
+
+      for(var i=1; i<32; i++){
+        div[i+5].innerHTML = i;
+      }
+    </script>
   </body>
 </html>
