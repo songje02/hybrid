@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Button만들기</title>
+    <style media="screen">
+      canvas{
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas style="background-color:pink" id="canvas" width="300" height="300"></canvas>
+  </body>
+  <script type="text/javascript">
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var x;
+    var y;
+    var click = 0;
+    ctx.fillStyle = "black";
+    ctx.fillRect(100,100,100,100);
+    canvas.onmousemove=function(event){
+      x = event.clientX - ctx.canvas.offsetLeft;
+      y = event.clientY - ctx.canvas.offsetTop; 
+    }
+
+    class Button{
+      constructor(x,y,w,h){
+        this.posX = x;
+        this.posY = y;
+        this.width = w;
+        this.height = h;
+        this.click = 0;
+      }
+
+      btnUpdate(){
+        if((x>=this.posX && x<=this.posX+this.width) && (y>=this.posY && y<=this.posY+this.height) && this.click == 0){
+          ctx.fillStyle = "red";
+        }
+        else if((x<this.posX || x>this.posX+this.width) || (y<this.posY || y>this.posY+this.height)){
+          ctx.fillStyle = "black";
+          this.click = 0;
+        }
+        ctx.fillRect(100,100,100,100);
+      }
+
+      btnClick(){
+        if((x>=this.posX && x<=this.posX+this.width) && (y>=this.posY && y<=this.posY+this.height)){
+          this.click = 1;
+          ctx.fillStyle = "yellow";
+          ctx.fillRect(100,100,100,100);
+        }
+      }
+    }
+
+    var btn = new Button(100, 100, 100, 100);
+    
+    function update(event) {
+        btn.btnUpdate();
+    }
+
+    canvas.onclick = function(event){
+      btn.btnClick();
+    }
+    setInterval(update, 1);
+
+  </script>
+</html>
