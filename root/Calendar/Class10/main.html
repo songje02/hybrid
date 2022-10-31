@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component 실습</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3"></script>
+    <!-- vue프레임웍을 사용한 예시 -->
+    <div id="app">{{message}}</div>
+    <!-- {{}}(머스태쉬) 해당 다른 값을 출력? -->
+    <script>
+        const {createApp} = Vue; //구조 분해 할당/ve라는 객체에서 createApp 함수를 실행
+
+        createApp({
+            data(){ //키 값 형태
+                return{
+                    message : "hello~world"
+                }
+            }
+        }).mount("#app"); //div태그 안에 넣은것, mount안에 getElementById가 들어가 있음
+        //return한 값을 id app이라는 곳에 출력
+    </script>
+</body>
+</html>
