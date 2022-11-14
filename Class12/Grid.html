@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048</title>
+</head>
+<body>
+    <style>
+        #app{width: 582px; height: 582px; background-color: beige; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-gap: 10px; padding: 10px;}
+        .bg_block{background-color: burlywood; }
+    </style>
+    <script src="https://unpkg.com/vue@3"></script>
+    <!-- <div id="app">
+        <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+        <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+        <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+        <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+    </div> -->
+    <div id="app">
+        <div class="bg_block" v-for="Count in bg_block_Count">{{Count}}</div>
+        {{ item }}
+    </div>
+    <script>
+        const {createApp} = Vue;
+        createApp({
+            data(){
+                return {
+                    bg_block_Count : 16,
+                }
+            },
+            mounted(){
+                console.log("마운트함");
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>
