@@ -8,21 +8,20 @@
 </head>
 <body>
     <style>
-        #app{width: 582px; height: 582px; background-color: beige; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 1fr;
-        grid-gap: 10px; padding: 10px;}
-        .bg_block{background-color: burlywood; }
+        #app{width: 590px; height: 590px; background-color: beige; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-gap: 10px; padding: 10px; border-radius: 20px; position: relative; }
+        .bg_block{background-color: burlywood; border-radius: 20px; text-align: center; font-size: 50px;
+            line-height: 2.5;}
+        .box{ background-color: brown; position: absolute; width: 120px; height: 120px;
+        left: 20px; top: 20px; border-radius: 25px; text-align: center; font-size: 50px; line-height: 2;}
     </style>
     <script src="https://unpkg.com/vue@3"></script>
-    <!-- <div id="app">
-        <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
-        <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
-        <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
-        <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
-    </div> -->
-    <div id="app">
-        <div class="bg_block" v-for="Count in bg_block_Count">{{Count}}</div>
-        {{ item }}
-    </div>
+    <center>
+        <div id="app">
+            <div class="box">2</div>
+            <div class="bg_block" v-for="Count in bg_block_Count">{{Count}}</div>
+        </div>
+    </center>
     <script>
         const {createApp} = Vue;
         createApp({
@@ -35,6 +34,38 @@
                 console.log("마운트함");
             }
         }).mount("#app");
+
+        var bg_block = document.getElementsByClassName("bg_block");
+        var box = document.getElementsByClassName("box");
+        function keylog(e){
+            console.log(e);
+            if(e.code == "ArrowRight"){
+                RightDown();
+            }
+            else if(e.code == "ArrowLeft"){
+                LeftDown();
+            }
+            else if(e.code == "ArrowUp"){
+                UpDown();
+            }
+            else if(e.code == "ArrowDown"){
+                Down();
+            }
+        }
+        window.onkeydown = keylog;
+         
+        function RightDown(){
+            box[0].style.marginLeft='450px';
+        }
+        function LeftDown(){
+            box[0].style.marginLeft='0px';
+        }
+        function UpDown(){
+            box[0].style.marginTop='0px';
+        }
+        function Down(){
+            box[0].style.marginTop='450px';
+        }
     </script>
 </body>
 </html>
