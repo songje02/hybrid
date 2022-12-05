@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2048</title>
-</head>
-<body>
-    <style>
-        #app{width: 590px; height: 590px; background-color: beige; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 1fr;
-        grid-gap: 10px; padding: 10px; border-radius: 20px; position: relative; }
-        .bg_block{background-color: burlywood; border-radius: 20px; text-align: center; font-size: 50px;
-            line-height: 2.5; display: flex; justify-content: center;}
-        .box{ background-color: brown; position: absolute; width: 120px; height: 120px;
-        left: 20px; top: 20px; border-radius: 25px; text-align: center; font-size: 50px; line-height: 2;}
-    </style>
-    <script src="https://unpkg.com/vue@3"></script>
-    <center>
-        <div id="app">
-            <!-- <div class="box">2</div> -->
-            <div class="bg_block" v-for="Count in bg_block_Count"></div>
-        </div>
-    </center>
-    <script src="Grid.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>2048</title>
+    </head>
+    <body>
+        <style>
+            #app{width: 590px; height: 590px; background-color: beige; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 1fr;
+            grid-gap: 10px; padding: 10px; border-radius: 20px; position: relative; }
+            .bg_block{background-color: burlywood; border-radius: 20px; text-align: center; font-size: 50px;
+                line-height: 2.5;}
+            .box{ background-color: brown; position: absolute; width: 120px; height: 120px;
+            left: 20px; top: 20px; border-radius: 25px; text-align: center; font-size: 50px; line-height: 2;}
+        </style>
+        <script src="https://unpkg.com/vue@3"></script>
+        
+        <center>
+            <div id="app">
+                <!-- <div class="box">2</div> -->
+                <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+                <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+                <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+                <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+                <!-- <div class="bg_block" v-for="Count in bg_block_Count">{{Count}}</div> -->
+            </div>
+        </center>
+
+        <script src="Grid.js"></script>
+    </body>
 </html>
