@@ -1,0 +1,18 @@
+#app{width: 590px; height: 590px; background-color: beige; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px; padding: 10px; border-radius: 20px; position: absolute;}
+    .bg_block{background-color: burlywood; border-radius: 20px; text-align: center; font-size: 50px;
+        line-height: 2.5;}
+    /* .box{ background-color: brown; position: absolute; width: 120px; height: 120px;
+    left: 20px; top: 20px; border-radius: 25px; text-align: center; font-size: 50px; line-height: 2;} */
+    #score{text-align: center; font-size: 30px; margin-right: 500px; font-weight: bold; 
+        height: 50px; color: burlywood; width: 200px;}
+    #name{width: 180px; height: 70px; font-size: 60px; color: brown; font-weight: bold;}
+    #GameStartUI{width: 610px; height: 610px; background-color: beige; position: relative;}
+    #GameEndUI{width: 610px; height: 610px; background-color: beige; position: relative; display: none;}
+    #start{font-size: 25px; margin-top: 290px;}
+    #end{font-size: 25px;display: block;}
+    #endScore{width: 300px; height: 75px; font-size: 40px; color: burlywood; 
+        font-weight: bold; display: inline-block; margin-top: 200px;}
+    #ct{background-color: beige; width: 610px; height: 700px; margin-left: 300px;}
+    span{display: block; font-size: 70px; margin-left: 130px; margin-top: 100px; 
+        color: burlywood; font-weight: bold; position: absolute;}

@@ -15,6 +15,7 @@ let gameState = 0;
 
 var cnt = Math.floor(Math.random() * 2.99);
 
+
 for(let i=0; i<4; i++){
     board[i] = new Array(4);
 }
@@ -44,8 +45,6 @@ startbtn.addEventListener("click", function(){
             }
             if(keyCode == 40) {
                 moveDown();
-            }else if(keyCode == 78){
-                randomNum();
             }
         });
     }
@@ -90,7 +89,6 @@ function update(){
 function randomNum(){
     ranPlaceX = parseInt(Math.random() * 3.99); 
     ranPlaceY = parseInt(Math.random() * 3.99);
-    var create = Math.floor(Math.random() * 2.99);
 
     if(board[ranPlaceX][ranPlaceY] == 0) {
         board[ranPlaceX][ranPlaceY] = 2;
