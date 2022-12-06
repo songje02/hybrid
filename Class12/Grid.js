@@ -1,19 +1,12 @@
-// const {createApp} = Vue;
-//         createApp({
-//             data(){
-//                 return {
-//                     bg_block_Count : 16,
-//                 }
-//             },
-//             mounted(){
-//                 console.log("마운트함");
-//             }
-//         }).mount("#app");
 let bg_block = document.getElementsByClassName("bg_block");
 let cellLength = bg_block.length;
 let board = new Array(4);
 let scoreDiv = document.getElementById("score");
-let btn = document.getElementById("btn");
+let startbtn = document.getElementById("start");
+let startUI = document.getElementById("GameStartUI");
+let endbtn = document.getElementById("end");
+let endUI = document.getElementById("GameEndUI");
+let endScore = document.getElementById("endScore");
 let score = 0;
 
 let overCheck = 1;
@@ -33,9 +26,10 @@ for(let i=0; i<4; i++) {
         }
     }
 }
-
-btn.addEventListener("click", function(){
+//클릭 이벤트
+startbtn.addEventListener("click", function(){
     gameState = 1;
+    startUI.style.display = "none";
     if(gameState == 1){
         window.addEventListener("keydown", (e)=> {
             const keyCode = e.keyCode;
@@ -55,6 +49,10 @@ btn.addEventListener("click", function(){
             }
         });
     }
+});
+endbtn.addEventListener("click", function(){
+    
+    window.location.reload();
 });
 
 init();
@@ -77,49 +75,45 @@ function init(){
     }
     update();
 }
-
+//업데이트 
 function update(){
     let count = 0;
     for(let i=0; i<4; i++){
         for(let j=0; j<4; j++){
             bg_block[count].innerHTML = board[i][j] == 0 ? "" : board[i][j];
             count++;
-            scoreDiv.innerHTML = "Score : " + score;
         }
     }
+    scoreDiv.innerHTML = "score : " + score;
 }
-
+//2 생성
 function randomNum(){
     ranPlaceX = parseInt(Math.random() * 3.99); 
     ranPlaceY = parseInt(Math.random() * 3.99);
     var create = Math.floor(Math.random() * 2.99);
 
     if(board[ranPlaceX][ranPlaceY] == 0) {
-        if(create == 0){
-            board[ranPlaceX][ranPlaceY] = 2;
-        }
-        else {
-        randomNum();
-        }
+        board[ranPlaceX][ranPlaceY] = 2;
         //update();
+    } else{
+        randomNum();
     }
+   
 }
-
+//4 생성
 function randomNum1(){
     ranPlaceX = parseInt(Math.random() * 3.99); 
     ranPlaceY = parseInt(Math.random() * 3.99);
-    var create = Math.floor(Math.random() * 2.99);
 
     if(board[ranPlaceX][ranPlaceY] == 0) {
         board[ranPlaceX][ranPlaceY] = 4;
-
-    } else {
+    } else{
         randomNum1();
     }
     //update();
 }
-
-function moveLeftNum() {
+//왼쪽 이동
+function moveLeftNum() { //배열 값 이동
     let k;
     numCheck = 1
 
@@ -128,7 +122,7 @@ function moveLeftNum() {
             if(board[i][j] != 0) {
                 k = j;
                 while(1) {
-                    if(board[i][k-1] != 0) {
+                    if(board[i][k-1] != 0) { //왼쪽 값이 0이 아니면
                         break;
                     }
                     board[i][k-1] = board[i][k];
@@ -141,12 +135,11 @@ function moveLeftNum() {
     }
 }
 
-function moveLeft() {
+function moveLeft() { //값 더해줌
     gameOver();
     moveLeftNum();
-    score++;
     for(let i = 0; i < 4; i++) {
-        for(let j = 1; j < 4; j++) {
+        for(let j = 0; j < 4; j++) {
             if(board[i][j] == board[i][j+1] && board[i][j] != 0) {
                 numCheck = 0;
                 // score += board[i][j];
@@ -156,12 +149,13 @@ function moveLeft() {
         }
     }
     if(!numCheck) {
+        score++;
         moveLeftNum();
         randomNum();
         update();
     }
 }
-
+//위쪽 이동
 function moveUpNum() {
     let k;
 
@@ -192,9 +186,8 @@ function moveUpNum() {
 function moveUp() {
     gameOver();
     moveUpNum();
-    score++;
     for(let i = 0; i < 4; i++) {
-        for(let j = 1; j < 3; j++) {
+        for(let j = 0; j < 3; j++) {
             if(board[j][i] == board[j+1][i] && board[j][i] != 0) {
                 // score += board[j][i];
                 board[j][i] *= 2;
@@ -204,12 +197,13 @@ function moveUp() {
         }
     }
     if(!numCheck) {
+        score++;
         moveUpNum();
         randomNum();
         update();
     }
 }
-
+//오른쪽 이동
 function moveRightNum() {
     let k;
 
@@ -236,11 +230,9 @@ function moveRightNum() {
 function moveRight() {
     gameOver();
     moveRightNum();
-    score++;
     for(let i = 0; i < 4; i++) {
-        for(let j = 2; j > -1; j--) {
+        for(let j = 3; j > 0; j--) {
             if(board[i][j] == board[i][j-1] && board[i][j] != 0) {
-                // score += board[i][j];
                 board[i][j] *= 2;
                 board[i][j-1] = 0;
                 numCheck = 0;
@@ -248,12 +240,13 @@ function moveRight() {
         }
     }
     if(!numCheck) {
+        score++;
         moveRightNum();
         randomNum();
         update();
     }
 }
-
+//아래쪽 이동
 function moveDownNum() {
     let k;
 
@@ -283,7 +276,6 @@ function moveDownNum() {
 function moveDown(){
     gameOver();
     moveDownNum();
-    score++;
     for(let i = 0; i < 4; i++) {
         for(let j = 3; j > 0; j--) {
             if(board[j][i] == board[j-1][i] && board[j][i] != 0) {
@@ -295,12 +287,13 @@ function moveDown(){
         }
     }
     if(!numCheck) {     
+        score++;
         moveDownNum();
         randomNum();
         update();
     }
 }
-
+//게임오버 체크
 function rowCheck() {
     for(let i = 0; i < 4; i++) {
         for(let j = 0; j < 3; j++) {
@@ -323,7 +316,7 @@ function columnCheck() {
 
 function gameOver() { //게임오버
     let fullCheck = 1;
-
+   
     for(let i = 0; i < 4; i++) {
         for(let j = 0; j < 4; j++) {
             if(board[i][j] == 0) {
@@ -334,9 +327,13 @@ function gameOver() { //게임오버
     rowCheck();
     columnCheck();
     if(fullCheck && overCheck) {
-        alert("Gameover\n" + "Score : " + score);
-        window.location.reload();
+        gameState = 2;
+
     }
 
+    if(gameState == 2){
+        endScore.innerHTML = "score : " + score;
+        endUI.style.display = "block";
+    }
     overCheck = 1;
 }
