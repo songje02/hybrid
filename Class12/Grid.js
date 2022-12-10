@@ -125,6 +125,7 @@ function moveLeftNum() { //배열 값 이동
                     }
                     board[i][k-1] = board[i][k];
                     board[i][k] = 0;
+                    console.log(board[i][k]);
                     k--;
                     numCheck = 0;
                 }

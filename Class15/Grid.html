@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>2048 게임</title>
+        <link rel="stylesheet" href="Grid.css" type="text/css">
+    </head>
+    <body>
+        <style>
+            
+        </style>
+        
+        <script src="https://unpkg.com/vue@3"></script>
+        <center id="ct">
+            <center>
+                <div id="name">2048</div>
+                <div id="score"></div>
+                <div id="app">
+                    <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+                    <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+                    <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+                    <div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div><div class="bg_block"></div>
+                </div>
+            </center>
+            <center>
+                <div id="GameStartUI">
+                    <button id="start">GameStart</button>
+                </div>
+                <div id="GameEndUI">
+                    <span>GameOver</span>
+                    <div id="endScore"></div>
+                    <button id="end">ReStart</button>
+                </div>
+                <div id="GameClearUI">
+                    <span>GameClear</span>
+                    <div id="endScore"></div>
+                    <button id="end">ReStart</button>
+                </div>
+            </center>
+        </center>
+        <script src="Grid.js"></script>
+    </body>
+</html>
